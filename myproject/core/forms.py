@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class AccountForm(forms.Form):
@@ -7,3 +8,10 @@ class AccountForm(forms.Form):
 
     class Meta:
         fields = ('cpf', 'password')
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request, *args, **kwargs)
+        self.fields['username'].label = 'CPF'
+        self.fields['username'].verbose_name = 'CPF'
