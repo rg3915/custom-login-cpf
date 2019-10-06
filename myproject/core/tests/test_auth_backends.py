@@ -21,6 +21,4 @@ class TestCpfBackend(TestCase):
         )
 
     def test_authenticate_with_invalid_credentials(self):
-        self.assertIsNone(
-            authenticate(username='000000000000', password='invalid'), self.user
-        )
+        self.assertIsNone(authenticate(username='000000000000', password='invalid')
