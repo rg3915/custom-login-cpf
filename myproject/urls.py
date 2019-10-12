@@ -1,12 +1,19 @@
 from django.contrib import admin
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 from django.urls import include, path
-from myproject.core import views as v
+
+from myproject.core.forms import LoginForm
 
 
 urlpatterns = [
     path('', include('myproject.core.urls', namespace='core')),
-    path('myauth/', v.authenticate, name='authenticate'),
+    path(
+        'login/',
+        LoginView.as_view(
+            template_name='core/auth.html', authentication_form=LoginForm
+        ),
+        name='authenticate'
+    ),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
 ]

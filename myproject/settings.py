@@ -123,3 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 LOGOUT_REDIRECT_URL = 'core:home'
+LOGIN_REDIRECT_URL = 'core:home'
+
+AUTHENTICATION_BACKENDS = [
+    'myproject.core.auth_backends.CpfBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
