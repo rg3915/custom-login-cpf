@@ -16,11 +16,7 @@ class CpfBackend(ModelBackend):
             User().set_password(password)
             messages.error(request, 'CPF não existe.')
         else:
-            if (
-                user.check_password(password)
-                and self.user_can_authenticate(user)
-            ):
+            if (user.check_password(password) and self.user_can_authenticate(user)):
                 return user
-            else:
-                messages.error(request, 'Senha inválida.')
-                return
+            
+            messages.error(request, 'Senha inválida.')            
