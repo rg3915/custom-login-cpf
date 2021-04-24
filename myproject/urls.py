@@ -1,9 +1,8 @@
 from django.contrib import admin
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import include, path
 
 from myproject.core.forms import LoginForm
-
 
 urlpatterns = [
     path('', include('myproject.core.urls', namespace='core')),

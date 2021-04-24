@@ -1,8 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 User = get_user_model()
 
@@ -16,7 +14,7 @@ class CpfBackend(ModelBackend):
             User().set_password(password)
             messages.error(request, 'CPF não existe.')
         else:
-            if (user.check_password(password) and self.user_can_authenticate(user)):
+            if (user.check_password(password) and self.user_can_authenticate(user)):  # noqa E501
                 return user
-            
-            messages.error(request, 'Senha inválida.')            
+
+            messages.error(request, 'Senha inválida.')
