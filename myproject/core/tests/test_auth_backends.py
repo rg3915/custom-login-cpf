@@ -17,8 +17,6 @@ class TestCpfBackend(TestCase):
 
     def test_authenticate_with_valid_credentials(self):
         self.assertEqual(
-            authenticate(username='25197394013', password='10203040'), self.user
+            authenticate(username='25197394013', password='10203040'),
+            self.user
         )
-
-    def test_authenticate_with_invalid_credentials(self):
-        self.assertIsNone(authenticate(username='000000000000', password='invalid')
